@@ -25,10 +25,10 @@ module TicTacToe
   	if @@player.piece == 'X'
   		@@computer = Computer.new('O')
   	else
-  		@@computer = 'O'
+  		@@computer = Computer.new('X')
 
   	# Looping Game Logic
-  	if @@player.piece = 'X'
+  	if @@player.piece == 'X'
   		GameIO.display(:board)
   	else
   		computer_selection = @@computer.pick_position(open_spaces)
