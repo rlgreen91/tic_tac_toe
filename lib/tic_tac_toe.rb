@@ -1,9 +1,10 @@
 require "tic_tac_toe/version"
+require "player"
+require "computer"
 
 module TicTacToe
 	extend Logging
 	extend GameIO
-	include Player
   
   # Basic gameplay
   def play_game
@@ -16,11 +17,15 @@ module TicTacToe
   	begin
   		player_piece = GameIO.display(:get_piece)
   		logger.info("Creating a player with piece" + player_piece)
-  		player = Player.new(player_piece)
+  		@@player = Player.new(player_piece)
   	rescue
   		GameIO.display(:invalid_piece)
   		retry
   	end
+  	if @@player.piece == 'X'
+  		@@computer = Computer.new('O')
+  	else
+  		@@computer
 
   	# Looping Game Logic
   	if player.piece = 'X'
