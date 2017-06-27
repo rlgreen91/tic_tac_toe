@@ -25,16 +25,16 @@ module TicTacToe
   	if @@player.piece == 'X'
   		@@computer = Computer.new('O')
   	else
-  		@@computer
+  		@@computer = 'O'
 
   	# Looping Game Logic
-  	if player.piece = 'X'
+  	if @@player.piece = 'X'
   		GameIO.display(:board)
   	else
-  	# Print game board:
-  	#   if player picks o, have computer pick and display updated board
+  		computer_selection = @@computer.pick_position(open_spaces)
+  	# have computer pick and display updated board
   	# Ask user what space they want
-  	selection = GameIO.display(:ask)
+  	user_selection = GameIO.display(:ask)
   	# Recieve input, update game state
   	# Check for winning combo
   	# Repeat from 'print game board' with computer's move
