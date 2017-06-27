@@ -12,7 +12,7 @@ module TicTacToe
   	# Initialize game
   	logger = Logging.logger
   	logger.info("Starting new game")
-  	board = GameState.new
+  	GameState.new
   	GameIO.display(:start)
   	begin
   		player_piece = GameIO.display(:get_piece)
@@ -24,20 +24,36 @@ module TicTacToe
   	end
   	if @@player.piece == 'X'
   		@@computer = Computer.new('O')
+  		GameState.next_player = :Player
   	else
   		@@computer = Computer.new('X')
+  		GameState.next_player = :Computer
 
   	# Looping Game Logic
-  	if @@player.piece == 'X'
-  		GameIO.display(:board)
-  	else
-  		computer_selection = @@computer.pick_position(open_spaces)
-  	# have computer pick and display updated board
-  	# Ask user what space they want
-  	user_selection = GameIO.display(:ask)
-  	# Recieve input, update game state
-  	# Check for winning combo
-  	# Repeat from 'print game board' with computer's move
+  	while GameState.winner.nil?
+  		case GameState.next_player
+  		when :Player
+  			GameIO.display(:board)
+  			begin
+  				place_selection = GameIO.display(:ask)
+  				@@player.validate_position_choice(place_selection)
+  			rescue
+  				GameIO.display(:invalid_place)
+  				retry
+  			end
+  			logger.info("Player has selected position " + place_selection)
+  			GameState.update_game_state(@@player, @@computer, place_selection)
+  		when :Computer
+  			place_selection = computer.pick_position(GameState.open_spaces)
+  			logger.info("Computer has selected position " + place_selection)
+  			GameState.update_game_state(@@computer, @@player, place_selection)
+  		end
+  		if GameState.open_spaces.empty?
+  			GameState.winner = :none
+  		end
+  	end
+
+  	logger.info(GameState.next_player.to_s + " wins")
   	GameIO.display(:finish)
   end
 end
