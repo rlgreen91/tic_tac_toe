@@ -1,6 +1,6 @@
 class Player
 	extend Logging
-	attr_reader :piece
+	attr_reader :piece, :possible_winning_combos
 
 	def initialize(piece)
 		@logger = Logging.logger
