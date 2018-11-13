@@ -1,20 +1,21 @@
 require 'set'
 
-class Player
-	extend Logging
-	extend GameState
+# This is the player class, which is responsible for knowing which piece the player is using and which spaces the player has occupied
+class TicTacToe::Player
+	# extend Logging
+	# extend GameState
 	attr_reader :piece, :possible_winning_combos
-	attr_accessor :occupied_spaces 
+	attr_accessor :occupied_spaces
 
 	def initialize(piece)
-		@logger = Logging.logger
+		# @logger = Logging.logger
 		@possible_winning_combos = Set.new
 		@occupied_spaces = Set.new
 		if is_valid_piece?(piece)
 			@piece = piece
-			@logger.info("Assigning " + piece + "to player.")
+			# @logger.info("Assigning " + piece + "to player.")
 		else
-			@logger.error("Invalid choice selected for piece.")
+			# @logger.error("Invalid choice selected for piece.")
 			raise ArgumentError, 'Invalid selection for piece'
 		end
 	end
