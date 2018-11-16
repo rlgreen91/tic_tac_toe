@@ -26,5 +26,10 @@ module TicTacToe
       player_spaces = player.occupied_spaces
       WINNING_COMBOS.select { |combo| (open_spaces | player_spaces) >= combo }
     end
+
+    def self.is_open_space?(board: board, position: position)
+      return true if board.open_spaces.include?(position)
+      raise ArgumentError, "Invalid selection for position"
+    end
   end
 end
