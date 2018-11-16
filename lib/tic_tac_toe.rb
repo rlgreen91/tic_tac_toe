@@ -1,7 +1,7 @@
 require "tic_tac_toe/version"
 require "tic_tac_toe/player"
 require "tic_tac_toe/manager"
-# require "computer"
+require "tic_tac_toe/computer"
 
 module TicTacToe
 	# extend Logging

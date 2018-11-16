@@ -5,7 +5,7 @@ module TicTacToe
 		attr_reader :piece
 		attr_accessor :occupied_spaces
 
-		def initialize(piece)
+		def initialize(piece:)
 			@piece = piece
 			@occupied_spaces = Set.new
 		end
