@@ -1,7 +1,7 @@
 require 'set'
 
 module TicTacToe
-	class TicTacToe::Player
+	class Player
 		attr_reader :piece
 		attr_accessor :occupied_spaces
 
