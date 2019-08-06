@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["rlgreen91"]
   spec.email         = ["rlgreen91@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = "Simple tic tac toe game to play against the computer"
+  spec.description   = "Simple tic tac toe game to play against the computer"
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.15"
+  spec.add_development_dependency "pry-byebug", "~> 3.7.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
 end
